@@ -1,0 +1,76 @@
+----------(JOBS)----------
+- Group of steps "tasks" that are executed in a specific order to achieve a particular goal. 
+- Each task can be a command, script, or program that performs a specific function.
+
+---------(PLUGINS)----------
+- Extensions that add additional functionality to a software application or platform.
+- /var/lib/jenkins => plugins directory for Jenkins, where plugins are installed and managed.
+
+----------(CREDENTIALS)----------
+- Information used to verify the identity of a user or system, such as usernames, passwords, API keys, or certificates.
+- Securely stores passwords, SSH keys, and API tokens
+
+-----------(AGENT)----------
+- A machine or environment that runs jobs and tasks in a continuous integration/continuous deployment (CI/CD) pipeline.
+- worker node that executes the build and deployment tasks defined in the pipeline.
+- agent types: 
+   1-Static Agent: A "physical" dedicated machine that is always available to run jobs.
+   2-Dynamic Agent(cloud): A temporary machine "vms , containers" that is provisioned on-demand to run jobs and is terminated after the job is completed. 
+
+
+------------(PIPELINE)----------
+- A set of automated processes that allow developers to build, test, and deploy their code in a continuous and efficient manner.
+- It defines the sequence of steps that need to be executed to deliver a software application from source code to production.
+- pipeline types:
+   1-Declarative Pipeline: A more structured and opinionated syntax that provides a simpler way to define pipelines using a predefined set of keywords and blocks.
+   2-Scripted Pipeline: A more flexible and expressive syntax that allows for greater customization and control over the pipeline's behavior using Groovy scripting language.
+
+
+-----------------(DECLARATIVE PIPELINE EXAMPLE)----------------------------
+pipeline {
+    agent any 
+    environment {
+        // 
+    }
+    stages {
+        stage('Build') { 
+            steps {
+                // 
+            }
+        }
+        stage('Test') { 
+            steps {
+                // 
+            }
+        }
+        stage('Deploy') { 
+            steps {
+                // 
+            }
+        }
+    }
+    post {
+        always {
+            // 
+        }
+        success {
+            // 
+        }
+        failure {
+            // 
+        }
+    }
+}
+
+--------------------------------------(SCRIPTED PIPELINE EXAMPLE)---------------
+node {  
+    stage('Build') { 
+        // 
+    }
+    stage('Test') { 
+        // 
+    }
+    stage('Deploy') { 
+        // 
+    }
+}
