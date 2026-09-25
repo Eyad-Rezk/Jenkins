@@ -1,0 +1,58 @@
+WHAT IS NEXUS ?
+ - Nexus is where software artifacts are kept, managed, and delivered easily to stakeholders. 
+ - The repository is the secure and scalable platform for hosting both JAR files, Docker images, npm packages, and other  artifacts created in the software development life cycle.
+ 
+📦 What is Nexus Repository Manager?
+ Imagine having a super-smart warehouse that:
+    1-Stores all your build artifacts (JARs, Docker images, npm packages)
+    2-Caches external dependencies to speed up builds
+    3-Scans for vulnerabilities automatically
+    4-Manages versions and cleanup policies
+    5-Provides APIs for complete automation
+
+That's Nexus Repository Manager
+
+HINT => Artifact is the result on build the source code
+
+NEXUS CAN STORE:
+- JAR
+- WAR
+- npm packages
+- Docker images
+- Python packages
+- NuGet packages
+- Helm charts
+- Raw files
+...
+GITHUB REPO => for source code   (Source code)
+NEXUS REPO  => for the artifact which is the result of building the source code (Artifacts / Packages / Images)
+
+Repository Types: 
+
+1-Hosted Repositories
+ Store your artifacts 
+├── Internal libraries
+├── Application releases
+
+2-Proxy Repositories
+Nexus will cache your dependencies so you will not take much time installing it from internet
+├── Maven Central → Local cache
+├── Docker Hub → Local cache
+└── npm registry → Local cache
+
+3-Group Repositories
+One endpoint to rule them all
+├── Hosted repo
+├── Proxy repo 1
+└── Proxy repo 2
+
+
+COMPONENT & ASSESTS
+Components: package/version
+Assests: files in the package
+
+Component
+    │
+    ├── Asset
+    ├── Asset
+    └── Asset

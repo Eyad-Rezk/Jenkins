@@ -29,6 +29,11 @@
 -----------------(DECLARATIVE PIPELINE EXAMPLE)----------------------------
 pipeline {
     agent any 
+    tools{
+        // write your tools that you scepified in the tools section in jenkins config
+        // maven 'Maven'
+        // nodejs 'node22.19'
+    }
     environment {
         // 
     }
@@ -72,5 +77,46 @@ node {
     }
     stage('Deploy') { 
         // 
+    }
+}
+
+
+--------------------------------------(HOW TO SET UP JENKINS FOR GITHUB REPO)---------------
+
+1- install jenins whatever you want in this demo i used ec2-ubuntu machine
+2- create repo and push your project
+3- create new jenkins job and enable these options:
+                    - GitHub hook trigger for GITScm polling
+                    - Poll SCM
+                    - Pipeline script from SCM
+                    - SCM => git
+                    - add your repo and github credentials , github branch , path to jenkinsfile
+4- in your repo go and create the Jenkinsfile and write your script
+5- go to your github repo open settings => Webhooks => 
+                    - add jenkins end point for ex: http://32.198.106.189:8080/github-webhook/
+                    - select application/json
+                    - Just the push event
+6- and there you have it
+
+--------------------------------------(HOW TO SET UP JENKINS NODE)---------------
+1- launch your jenkins master and agent node  
+2- open the ssh port on agent node so master can ssh to it
+3- install openjdk (Open Java Development Kit) on agent node
+4- open jenkins dashboard on the master node go to settings => node => new node
+5- specify num of jobs , root dir , labels , nodes's ip , ssh credentials
+6- after you finish go to agent node logs to check te status
+7- don't forget to mention the agent node label in the pipeline like this:
+pipeline {
+    agent {
+        node {
+            label 'agent-01'
+        }
+    }
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
     }
 }
